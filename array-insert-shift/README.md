@@ -15,6 +15,7 @@ Space -> O(n)we will need to create a new array to hold the shifted elements
 ```python 
 code :
 def insertShiftArray(arr,value):
+
  array_length=len(arr)
  middle_index = (array_length // 2)+(array_length % 2)
  shifted_array=[None]*(array_length+1)
@@ -26,12 +27,12 @@ def insertShiftArray(arr,value):
  for i in range (middle_index,array_length):
     shifted_array[i+1]=arr[i]
 
-
- return shifted_array   
-
+ if len(arr) == 0:
+        return [value]
  
-array =[2,4,6,-8]
-value1 = 16
-
-print(insertShiftArray(array,value1))
+ return shifted_array   
 ```
+
+
+[The code link](https://github.com/asfantala/data-structures-and-algorithms/blob/main/array-insert-shift/array_insert_shift.py)
+[test file link](https://github.com/asfantala/data-structures-and-algorithms/blob/main/array-insert-shift/test_array_insert_shift.py)
