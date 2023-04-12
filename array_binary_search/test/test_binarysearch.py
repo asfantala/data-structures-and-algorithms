@@ -1,4 +1,4 @@
-from binarysearch import BinarySearch
+from binarysearch.binarysearch import BinarySearch
 
 def test_binarysearch():
     actual = BinarySearch([4, 8, 15, 16, 23, 42], 15)

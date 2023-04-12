@@ -1,11 +1,12 @@
 # Challenge Binary Search
  * Create a function that accept an array and the search key
 function has a while loop to loop through the array and check the binary search conditions
+dividing the search range in half at each step, and eliminating one half based on whether the search_key is greater or less than the value at the midpoint of the range. This process continues until the search_key is found
 return -1 or index of the array's element
 ## Whiteboard Process
 <!-- Embedded whiteboard image -->
 
-![whitboard](./assets/Untitled.jpg)
+![whitboard](./assets/binary.jpg)
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 * Big O 
