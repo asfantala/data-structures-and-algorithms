@@ -2,19 +2,19 @@
 
 ## Whiteboard Process
 <!-- Embedded whiteboard image -->
-![](assets/Untitled%20(5).jpg)
+![](assets/Untitled%20(7).jpg)
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 Big O 
-insertion o(1)
+
+|insertion Time complexity: O(1)|
+|included|Time complexity: O(n)|
+|to_string|Time complexity: O(n)|
 time and space complexity o(n) n refer to number of nodes
 
 ## Solution
 ```
-from linkedlist.Node import Node
-
-class LinkedList:
-    def __init__(self) :
+ def __init__(self) :
         self.head= None
 
     def insert(self, value):
@@ -33,20 +33,16 @@ class LinkedList:
         return False
     
 
-    def __str__(self):
     
-        output  = ""
-        
+    def to_string(self):
+        output = ""
         if self.head is None:
-            output  = "Empty LinkeList"
+            output = "Empty LinkedList"
         else:
             current = self.head
-            while(current):
-                output += f'{current.value} -> '
+            while current:
+                output += f"{str(current.value)} -> "
                 current = current.next
             output += "Null"
-        return output   
-
-    def __repr__(self):
-          return self.__str__()
+        return output
     ```
