@@ -1,6 +1,6 @@
 import pytest
 
-from linkedlist.linkedlist import LinkedList
+from Linkedlist.linkedlist import LinkedList
 
 def test_instantiate_an_empty_linked_list():
     ll = LinkedList()
