@@ -1,6 +1,5 @@
 from Linkedlist.Node import Node
 
-
 class LinkedList:
     def __init__(self) :
         self.head= None
@@ -98,6 +97,36 @@ class LinkedList:
             current = current.next
         return "Empty LinkedList"
     
+
+    def kth_from_end(self,k):
+        '''
+        Return the node's value that is k places from the tail of the linked list.
+        traverse the linked list to find the length and check the conditions 
+        '''
+        if not self.head:
+           return "Empty LinkedList"
+        
+        if k < 0 :
+            return "k is not a positive integer"
+    
+        current = self.head
+        length = 0
+        while current:
+            length +=1
+            current= current.next
+        if length == 1:
+                return "linked list of a size 1"
+        
+        if k > length:
+            return 'k is greater than the length of the linked list.'
+        
+        position = length - k - 1
+        current = self.head
+        for i in range(position):
+            current = current.next
+
+        return current.value    
+            
 
 
     def __repr__(self):

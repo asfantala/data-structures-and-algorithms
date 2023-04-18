@@ -47,7 +47,6 @@ def test_search():
     expected = True
     assert actual == expected
 
-
 def test_search1():
     ll = LinkedList()
     ll.insert(1)
@@ -56,7 +55,6 @@ def test_search1():
     assert actual == expected   
     
     
-
 def test_return():
     ll = LinkedList()
     ll.insert("Ta")
@@ -115,9 +113,7 @@ def test_insert_after_middle():
     expected = 5
     assert actual == expected
 
-    
-
-    
+ 
 def test_insert_after_last():
     ll = LinkedList()
     ll.insert("T")
@@ -127,7 +123,78 @@ def test_insert_after_last():
     actual = str(ll)
     expected = 'C -> D -> A -> T -> Null'
     assert actual == expected
-    
+
+def test_greater_than_length():
+    ll = LinkedList()
+    ll.insert("T")
+    ll.insert("A")
+    ll.insert("C")
+
+    actual = ll.kth_from_end(4)
+    expected = 'k is greater than the length of the linked list.'
+    assert actual == expected
+
+def test_k_and_length_are_the_same():
+    ll = LinkedList()
+    ll.insert("T")
+    ll.insert("A")
+    ll.insert("C")
+
+    actual = ll.kth_from_end(3)
+    expected = 'C'
+    assert actual == expected
+
+def test_k_is_not_positive():
+    ll = LinkedList()
+    ll.insert("T")
+    ll.insert("A")
+    ll.insert("C")
+
+    actual = ll.kth_from_end(-3)
+    expected = "k is not a positive integer"
+    assert actual == expected
+
+def test_linked_list_is_of_a_size_1():
+    ll = LinkedList()
+    ll.insert("T")
+
+    actual = ll.kth_from_end(0)
+    expected = "linked list of a size 1"
+    assert actual == expected
+
+def test_happy_path():
+    ll = LinkedList()
+    ll.insert("T")
+    ll.insert("A")
+    ll.insert("C")
+
+    actual = ll.kth_from_end(0)
+    expected = 'T'
+    assert actual == expected
+
+def test_happy_path1():
+    ll = LinkedList()
+    ll.insert("T")
+    ll.insert("A")
+    ll.insert("C")
+
+    actual = ll.kth_from_end(1)
+    expected = 'A'
+    assert actual == expected
+
+def test_happy_path2():
+    ll = LinkedList()
+    ll.insert(2)
+    ll.insert(8)
+    ll.insert(3)
+    ll.insert(1)
+
+
+    actual = ll.kth_from_end(2)
+    expected = 3
+    assert actual == expected
+
+
 @pytest.fixture
 def ll():
     ll = LinkedList()
