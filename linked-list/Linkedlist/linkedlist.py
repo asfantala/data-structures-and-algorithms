@@ -126,7 +126,37 @@ class LinkedList:
             current = current.next
 
         return current.value    
-            
+
+    def zip_lists(list1,list2):
+
+        '''
+        function called zip lists
+        Arguments: 2 linked lists
+        Return: New Linked List,
+        Zip the two linked lists together into one so that the nodes alternate between the two lists and return a reference to the the zipped list.
+        
+        '''
+        current1 = list1.head
+        current2 = list2.head
+
+        if not current1:
+            return list2
+        elif not current2:
+            return list1
+        else:
+            while current1 and current2:
+                temp1 = current1.next
+                temp2 = current2.next
+                current1.next = current2
+                current2.next = temp1
+                current1 = temp1
+                current2 = temp2
+        if current1:
+            current1.next = None
+        return list1
+
+
+        # return new_linkedlist        
 
 
     def __repr__(self):

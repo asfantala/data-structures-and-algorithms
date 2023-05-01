@@ -195,6 +195,53 @@ def test_happy_path2():
     assert actual == expected
 
 
+def test_zipLists():
+    list1 = LinkedList()
+    list1.append(1)
+    list1.append(3)
+    list1.append(2)
+    list2 = LinkedList()
+    list2.append(5)
+    list2.append(9)
+    list2.append(4)
+    
+    actual = LinkedList.zip_lists(list1,list2)
+    expected = '1 -> 5 -> 3 -> 9 -> 2 -> 4 -> Null'
+    assert str(actual) == expected
+
+def test_ziplist2():
+    list1 = LinkedList()
+    list2 = LinkedList()
+    list2.append(5)
+    list2.append(9)
+    list2.append(4)
+
+    actual = LinkedList.zip_lists(list1,list2)
+    expected = '5 -> 9 -> 4 -> Null'
+    assert str(actual) == expected
+
+def test_zipLists3():
+    list1 = LinkedList()
+    list1.append(1)
+    list1.append(3)
+    list2 = LinkedList()
+    list2.append(5)
+    
+    actual = LinkedList.zip_lists(list1,list2)
+    expected = '1 -> 5 -> 3 -> Null'
+    assert str(actual) == expected 
+
+
+def test_zipLists3():
+    list1 = LinkedList()
+   
+    list2 = LinkedList()
+    
+    actual = LinkedList.zip_lists(list1,list2)
+    expected = 'Empty LinkedList'
+    assert str(actual) == expected 
+        
+
 @pytest.fixture
 def ll():
     ll = LinkedList()
