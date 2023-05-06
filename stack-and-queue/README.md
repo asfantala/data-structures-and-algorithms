@@ -2,6 +2,7 @@
 
 ## Whiteboard Process
 <!-- Embedded whiteboard image -->
+![](Untitled(10).jpg)
 
 ## Approach & Efficiency
 For the Stack:
