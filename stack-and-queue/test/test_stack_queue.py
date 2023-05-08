@@ -1,6 +1,7 @@
 import pytest
 from stack_queue.Stack import Stack
 from stack_queue.Queue import Queue
+from stack_queue.Stack_queue_pseudo import PseudoQueue
 
 def test_stack():
     s = Stack()
@@ -114,6 +115,27 @@ def test_excep():
         q.dequeue()
     except Exception as e:
         assert str(e) == "Queue is empty"
+
+def test_pseudo_queue_happy_path():
+        queue = PseudoQueue()
+        queue.enqueue(1)
+        queue.enqueue(2)
+        queue.enqueue(3)
+        assert queue.dequeue() == 1
+        assert queue.dequeue() == 2
+        queue.enqueue(4)
+        queue.enqueue(5)
+        queue.enqueue(6)
+        assert queue.dequeue() == 3
+        assert queue.dequeue() == 4
+        assert queue.dequeue() == 5
+        assert queue.dequeue() == 6
+
+
+def test_pseudo_queue_empty():
+    queue = PseudoQueue()
+    with pytest.raises(IndexError):
+        queue.dequeue()    
     
 
 # test_stack()
