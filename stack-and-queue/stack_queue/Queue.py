@@ -22,25 +22,40 @@ class Queue:
             self.rear.next = node
             self.rear = node
 
+    # def dequeue(self):
+    #     '''
+    #     Arguments: none
+    #     Returns: the value from node from the front of the queue
+    #     Removes the node from the front of the queue
+    #     Should raise exception when called on empty queue
+    #     '''
+    #     #if the queue is empty
+    #     if self.front == None:
+    #         raise Exception("Queue is empty")
+    #     # if the queue contains only one node
+    #     if self.front == self.rear:
+    #         self.rear = None
+    #         #self.front = None
+    #     temp = self.front
+    #     self.front = self.front.next
+    #     temp.next = None
+
+    #     return temp.value
+
     def dequeue(self):
         '''
         Arguments: none
         Returns: the value from node from the front of the queue
         Removes the node from the front of the queue
-        Should raise exception when called on empty queue
+        Should return None when called on empty queue
         '''
-        #if the queue is empty
         if self.front == None:
-            raise Exception("Queue is empty")
-        # if the queue contains only one node
-        if self.front == self.rear:
-            self.rear = None
-            #self.front = None
-        temp = self.front
+            return None
+        node = self.front
         self.front = self.front.next
-        temp.next = None
-
-        return temp.value
+        if self.front == None:
+            self.back = None
+        return node.value
     def peek(self):
         
         '''

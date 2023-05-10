@@ -2,7 +2,8 @@ import pytest
 from stack_queue.Stack import Stack
 from stack_queue.Queue import Queue
 from stack_queue.Stack_queue_pseudo import PseudoQueue
-
+from stack_queue.AnimalShelter import AnimalShelter
+from stack_queue.AnimalShelter import Animal
 def test_stack():
     s = Stack()
     assert s.is_empty() == True
@@ -137,6 +138,26 @@ def test_pseudo_queue_empty():
     with pytest.raises(IndexError):
         queue.dequeue()    
     
+def test_animal_shelter():
+    shelter = AnimalShelter()
 
-# test_stack()
-# test_queue()
+    shelter.enqueue(Animal("Buddy", "Dog"))
+    shelter.enqueue(Animal("Fluffy", "Cat"))
+    shelter.enqueue(Animal("Max", "Dog"))
+    shelter.enqueue(Animal("Smokey", "Cat"))
+
+    dog = shelter.dequeue("Dog")
+    assert dog.name == "Buddy"
+
+    cat = shelter.dequeue("Cat")
+    assert cat.name == "Fluffy"
+
+    dog = shelter.dequeue("Dog")
+    assert dog.name == "Max"
+
+    cat = shelter.dequeue("Cat")
+    assert cat.name == "Smokey"
+
+    dog = shelter.dequeue("Dog")
+    assert dog == None
+
