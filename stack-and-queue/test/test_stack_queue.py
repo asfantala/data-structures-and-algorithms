@@ -149,14 +149,14 @@ def test_animal_shelter():
     shelter.enqueue(Cat("Tony"))
     shelter.enqueue(Dog("Clifford"))
     shelter.enqueue(Dog("Blue"))
-    assert(str(shelter.dequeueAny()), "Hanzack")
-    assert(str(shelter.dequeueAny()), "Garfield")
-    assert(str(shelter.dequeueDog()), "Pluto")
-    assert(str(shelter.dequeueDog()), "Clifford")
-    assert(str(shelter.dequeueCat()), "Tony")
-    assert(str(shelter.dequeueCat()), "None")
-    assert(str(shelter.dequeueAny()), "Blue")
-    assert(str(shelter.dequeueAny()), "None")
+    assert(str(shelter.dequeue('cat')), "Hanzack")
+    assert(str(shelter.dequeue('cat')), "Garfield")
+    assert(str(shelter.dequeue('dog')), "Pluto")
+    assert(str(shelter.dequeue('dog')), "Clifford")
+    assert(str(shelter.dequeue('cat')), "Tony")
+    assert(str(shelter.dequeue('cat')), "None")
+    assert(str(shelter.dequeue('dog')), "Blue")
+    assert(str(shelter.dequeue('dog')), "None")
 
 
 def test_validate_brackets():
