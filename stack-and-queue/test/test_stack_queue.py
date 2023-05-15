@@ -3,7 +3,9 @@ from stack_queue.Stack import Stack
 from stack_queue.Queue import Queue
 from stack_queue.Stack_queue_pseudo import PseudoQueue
 from stack_queue.AnimalShelter import AnimalShelter
-from stack_queue.AnimalShelter import Animal
+from stack_queue.AnimalShelter import Cat
+from stack_queue.AnimalShelter import Dog
+
 def test_stack():
     s = Stack()
     assert s.is_empty() == True
@@ -140,24 +142,19 @@ def test_pseudo_queue_empty():
     
 def test_animal_shelter():
     shelter = AnimalShelter()
+    shelter.enqueue(Cat("Hanzack"))
+    shelter.enqueue(Dog("Pluto"))
+    shelter.enqueue(Cat("Garfield"))
+    shelter.enqueue(Cat("Tony"))
+    shelter.enqueue(Dog("Clifford"))
+    shelter.enqueue(Dog("Blue"))
+    assert(str(shelter.dequeueAny()), "Hanzack")
+    assert(str(shelter.dequeueAny()), "Garfield")
+    assert(str(shelter.dequeueDog()), "Pluto")
+    assert(str(shelter.dequeueDog()), "Clifford")
+    assert(str(shelter.dequeueCat()), "Tony")
+    assert(str(shelter.dequeueCat()), "None")
+    assert(str(shelter.dequeueAny()), "Blue")
+    assert(str(shelter.dequeueAny()), "None")
 
-    shelter.enqueue(Animal("Buddy", "Dog"))
-    shelter.enqueue(Animal("Fluffy", "Cat"))
-    shelter.enqueue(Animal("Max", "Dog"))
-    shelter.enqueue(Animal("Smokey", "Cat"))
-
-    dog = shelter.dequeue("Dog")
-    assert dog.name == "Buddy"
-
-    cat = shelter.dequeue("Cat")
-    assert cat.name == "Fluffy"
-
-    dog = shelter.dequeue("Dog")
-    assert dog.name == "Max"
-
-    cat = shelter.dequeue("Cat")
-    assert cat.name == "Smokey"
-
-    dog = shelter.dequeue("Dog")
-    assert dog == None
 

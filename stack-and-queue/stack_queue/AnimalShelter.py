@@ -1,44 +1,46 @@
 from stack_queue.Queue import Queue
+from abc import ABC, abstractmethod
 
-class Animal:
-    def __init__(self, name ,species):
-        self.name = name
+
+class Animal(ABC):
+    @abstractmethod
+    def __init__(self, species: str, name: str) -> None:
         self.species = species
+        self.name = name
 
 
-class AnimalShelter:
-
-    def __init__(self):
-        self.cat = Queue()
-        self.dog = Queue()
-
-    def enqueue(self, animal: Animal):
-        if animal.species == 'Dog':
-            self.dog.enqueue(animal)
-        elif animal.species == 'Cat':
-            self.cat.enqueue(animal)
-    def dequeue(self, pref=None):
-       
-        if pref == "Dog":
-            return self.dog.dequeue()
-        elif pref == "Cat":
-            return self.cat.dequeue()
-        else:
-            return None
-    # def dequeue(self, pref):
-    #  if pref != 'Dog' and pref != 'Cat':
-    #     return None
-
-    #  if pref == 'Dog':
-    #     return self.dog.dequeue()
-    #  elif pref == 'Cat':
-    #     return self.cat.dequeue()
-
-   
-
-   
+class Dog(Animal):
+    def __init__(self, name: str) -> None:
+        super().__init__("dog", name)
 
 
+class Cat(Animal):
+    def __init__(self, name: str) -> None:
+        super().__init__("cat", name)
 
+class AnimalShelter():
+  def __init__(self):
+    self.cats, self.dogs = [], []
+  
+  def enqueue(self, animal):
+    if animal.__class__ == Cat: 
+       self.cats.append(animal)
 
-
+    else:                       
+       self.dogs.append(animal)
+  
+  def dequeueAny(self):
+    if len(self.cats): return self.dequeueCat()
+    return self.dequeueDog()
+  
+  def dequeueCat(self):
+    if len(self.cats) == 0: return None
+    cat = self.cats[0]
+    self.cats = self.cats[1:]
+    return cat
+    
+  def dequeueDog(self):
+    if len(self.dogs) == 0: return None
+    dog = self.dogs[0]
+    self.dogs = self.dogs[1:]
+    return dog
