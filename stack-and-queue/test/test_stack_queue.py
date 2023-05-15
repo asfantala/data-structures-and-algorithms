@@ -1,6 +1,11 @@
 import pytest
 from stack_queue.Stack import Stack
 from stack_queue.Queue import Queue
+from stack_queue.Stack_queue_pseudo import PseudoQueue
+from stack_queue.AnimalShelter import AnimalShelter
+from stack_queue.AnimalShelter import Cat
+from stack_queue.AnimalShelter import Dog
+from stack_queue.stack_queue_bracket import validate_brackets
 
 def test_stack():
     s = Stack()
@@ -114,7 +119,77 @@ def test_excep():
         q.dequeue()
     except Exception as e:
         assert str(e) == "Queue is empty"
-    
 
-# test_stack()
-# test_queue()
+def test_pseudo_queue_happy_path():
+        queue = PseudoQueue()
+        queue.enqueue(1)
+        queue.enqueue(2)
+        queue.enqueue(3)
+        assert queue.dequeue() == 1
+        assert queue.dequeue() == 2
+        queue.enqueue(4)
+        queue.enqueue(5)
+        queue.enqueue(6)
+        assert queue.dequeue() == 3
+        assert queue.dequeue() == 4
+        assert queue.dequeue() == 5
+        assert queue.dequeue() == 6
+
+
+def test_pseudo_queue_empty():
+    queue = PseudoQueue()
+    with pytest.raises(IndexError):
+        queue.dequeue()    
+    
+def test_animal_shelter():
+    shelter = AnimalShelter()
+    shelter.enqueue(Cat("Hanzack"))
+    shelter.enqueue(Dog("Pluto"))
+    shelter.enqueue(Cat("Garfield"))
+    shelter.enqueue(Cat("Tony"))
+    shelter.enqueue(Dog("Clifford"))
+    shelter.enqueue(Dog("Blue"))
+    assert(str(shelter.dequeueAny()), "Hanzack")
+    assert(str(shelter.dequeueAny()), "Garfield")
+    assert(str(shelter.dequeueDog()), "Pluto")
+    assert(str(shelter.dequeueDog()), "Clifford")
+    assert(str(shelter.dequeueCat()), "Tony")
+    assert(str(shelter.dequeueCat()), "None")
+    assert(str(shelter.dequeueAny()), "Blue")
+    assert(str(shelter.dequeueAny()), "None")
+
+
+def test_validate_brackets():
+    assert validate_brackets("{}") is True
+
+def test_validate_brackets2():
+    assert validate_brackets("{}(){}") is True
+
+def test_validate_brackets3():
+    assert validate_brackets("()[[Extra Characters]]") is True
+
+def test_validate_brackets4():
+    assert validate_brackets("(){}[[]]") is True
+
+def test_validate_brackets5():
+    assert validate_brackets("{}{Code}[Fellows](())") is True
+
+def test_validate_brackets6():
+   assert validate_brackets("[({}]") is False
+
+def test_validate_brackets7():
+
+    assert validate_brackets("(](") is False
+
+def test_validate_brackets8():
+        assert validate_brackets("{(})") is False
+
+def test_validate_brackets9():
+        assert validate_brackets("{") is False
+
+def test_validate_brackets01():
+        assert validate_brackets(")") is False
+
+def test_validate_brackets02():
+
+    assert validate_brackets("[}") is False
