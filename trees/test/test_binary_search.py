@@ -95,3 +95,12 @@ def test_contains_false():
     expected = False
     assert actual == expected
 
+
+def test_findmax ():
+    tree1 = BinarySearch()
+    tree1.add(5)  
+    tree1.add(4)  
+    tree1.add(6)  
+    actual = tree1.findMax(tree1.root)
+    expected = 6
+    assert actual == expected

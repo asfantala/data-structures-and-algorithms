@@ -1,3 +1,4 @@
+
 from trees.Node import Node
 
 class Binary_tree:
@@ -45,7 +46,19 @@ Each depth first traversal method should return an array of values, ordered appr
         result.append(root.value)  # Append the value to the result list
 
      return result
+    
+    def findMax(self, root):
+        if root is None:
+            return float('-inf')
 
+        res = root.value
+        lres = self.findMax(root.left)
+        rres = self.findMax(root.right)
+        if lres > res:
+            res = lres
+        if rres > res:
+            res = rres
+        return res
 
 
 class BinarySearch(Binary_tree):
@@ -93,5 +106,19 @@ class BinarySearch(Binary_tree):
 
         return False
     
+   
 
 
+# Driver Code
+if __name__ == '__main__':
+    tree = Binary_tree()
+    tree.add(2)
+    tree.add(7)
+    tree.add(5)
+    tree.add(6)
+    tree.add(1)
+    tree.add(9)
+    tree.add(4)
+
+    max_value = tree.findMax(tree.root)
+    print("Maximum element is", max_value)
