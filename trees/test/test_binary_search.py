@@ -104,3 +104,29 @@ def test_findmax ():
     actual = tree1.findMax(tree1.root)
     expected = 6
     assert actual == expected
+
+
+def test_find_max1():
+    tree = Binary_tree()
+    
+    # Create the tree nodes
+    node1 = Node(24)
+    node2 = Node(51)
+    node3 = Node(1)
+    node4 = Node(3)
+    node5 = Node(70)
+    node6 = Node(12)
+    node7 = Node(17)
+    
+    node1.left = node2
+    node1.right = node3
+    node2.left = node4
+    node2.right = node5
+    node3.left = node6
+    node3.right = node7
+    
+    tree.root = node1
+    
+    actual = tree.findMax(tree.root)
+    expected = 70
+    assert actual == expected    
