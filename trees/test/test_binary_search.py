@@ -95,3 +95,19 @@ def test_contains_false():
     expected = False
     assert actual == expected
 
+
+def test_breadth_first():
+    binary_tree = Binary_tree()
+
+    binary_tree.root = Node(2)
+    binary_tree.root.left = Node(7)
+    binary_tree.root.right = Node(5)
+    binary_tree.root.left.left = Node(2)
+    binary_tree.root.left.right = Node(6)
+    binary_tree.root.right.right = Node(9)
+    binary_tree.root.left.right.left = Node(5)
+    binary_tree.root.left.right.right = Node(11)
+    binary_tree.root.right.right.left = Node(4)
+    actual = binary_tree.breadth_first()
+    expected = [2, 7, 5, 2, 6, 9, 5, 11, 4]
+    assert actual == expected 
