@@ -52,39 +52,67 @@ def insert(sorted, value):
 
 ### Step-by-Step Explanation and Visualization:
 
-- The input array is [8, 4, 23, 42, 16, 15].
-1. The sorted array is initially empty.
-2. The first element of input, which is 8, is appended to the sorted array. 
-      - sorted: [8]
-3. Starting from the second element (4) of input, the insert function is called.
-      - value: 4
-      - The while loop compares value (4) with the elements in sorted until it finds the correct position to insert.
-      - Since 4 is less than 8, the loop condition fails, and i remains 0.
-      - The second while loop swaps the elements to make space for the insertion.
-      - sorted remains unchanged as there is no need to swap elements.
-      - sorted: [8]
-      - The value (4) is appended to the sorted array.
-      - sorted: [8, 4] 
-4. The next element in input is 23.
-      - value: 23
-      - The first while loop finds the correct position for 23, which is between 4 and 8.
-      - i becomes 1.
-      - The second while loop swaps the elements to make space for the insertion.
-      - sorted: [8, 8, 4]
-      - The value (23) is inserted at the correct position.
-      -  sorted: [8, 23, 4]
-5. The process continues for the remaining elements of input.
-      - input[3] = 42:
-      - sorted: [8, 23, 4]
-      - sorted: [8, 23, 42, 4]
-      -  input[4] = 16:
-      - sorted: [8, 23, 42, 4]
-      -  sorted: [8, 16, 23, 42, 4]
-      -  input[5] = 15:
-      -  sorted: [8, 16, 23, 42, 4]
-      -  sorted: [8, 15, 16, 23, 42, 4]
-      -  The final sorted array is [4, 8, 15, 16, 23, 42].
+-The input array is [8, 4, 23, 42, 16, 15].
 
+- Iteration 1:
+
+- i = 1, value = 4
+- The while loop is skipped since 8 is not greater than 4.
+- The value 4 is inserted at the correct position.
+- The array becomes [4, 8, 23, 42, 16, 15].
+
+- Iteration 2:
+
+- i = 2, value = 23
+- The while loop is skipped since 8 is not greater than 23.
+- The value 23 remains in its position.
+- The array remains [4, 8, 23, 42, 16, 15].
+
+- Iteration 3:
+- i = 3, value = 42
+- The while loop is skipped since 23 is not greater than 42.
+- The value 42 remains in its position.
+- The array remains [4, 8, 23, 42, 16, 15].
+
+- Iteration 4:
+
+- i = 4, value = 16
+- The while loop is executed.
+- Since 42 is greater than 16, we shift 42 to the right.
+- The array becomes [4, 8, 23, 42, 42, 15].
+- The while loop continues.
+- Since 23 is greater than 16, we shift 23 to the right.
+- The array becomes [4, 8, 23, 23, 42, 15].
+- The while loop continues.
+- Since 8 is greater than 16, we shift 8 to the right.
+- The array becomes [4, 8, 8, 23, 42, 15].
+- The while loop continues.
+- Since 4 is greater than 16, we shift 4 to the right.
+- The array becomes [4, 4, 8, 23, 42, 15].
+- The while loop ends, and we insert the value 16 at the correct position.
+- The array becomes [4, 8, 16, 23, 42, 15].
+
+- Iteration 5:
+
+- i = 5, value = 15
+- The while loop is executed.
+- Since 42 is greater than 15, we shift 42 to the right.
+- The array becomes [4, 8, 16, 23, 42, 42].
+- The while loop continues.
+- Since 23 is greater than 15, we shift 23 to the right.
+- The array becomes [4, 8, 16, 23, 23, 42].
+- The while loop continues.
+- Since 16 is greater than 15, we shift 16 to the right.
+- The array becomes [4, 8, 16, 16, 23, 42].
+- The while loop continues.
+- Since 8 is greater than 15, we shift 8 to the right.
+- The array becomes [4, 8, 8, 16, 23, 42].
+- The while loop continues.
+- Since 4 is greater than 15, we shift 4 to the right.
+- The array becomes [4, 4, 8, 8, 16, 23].
+- The while loop ends, and we insert the value 15 at the correct position.
+- The array becomes [4, 8, 15, 16, 23, 42].
+The final sorted array is [4, 8, 15, 16, 23, 42].
 
 ### Test Cases:
 In this article i tested these :
@@ -121,4 +149,4 @@ def test_insertion4():
 
 ### Complexity 
 - insertion sort has a time complexity of O(n^2)
-- space complexity of insertion sort is O(1)
+- The space complexity of the insertion sort algorithm is O(n) because it requires additional space for the sorted array
