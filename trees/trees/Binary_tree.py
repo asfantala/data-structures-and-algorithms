@@ -1,4 +1,6 @@
 from trees.Node import Node
+from trees.Queue import Queue
+
 
 class Binary_tree:
 
@@ -46,7 +48,24 @@ Each depth first traversal method should return an array of values, ordered appr
 
      return result
 
+    def breadth_first(self):
+        result = []
+        if self.root is None:
+            return result
 
+        queue = []  # Initialize a list-based queue
+        queue.append(self.root)
+
+        while queue:
+            node = queue.pop(0)
+            result.append(node.value)
+
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+        return result
 
 class BinarySearch(Binary_tree):
     """
