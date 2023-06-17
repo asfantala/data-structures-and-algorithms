@@ -5,6 +5,7 @@ from stack_queue.Stack_queue_pseudo import PseudoQueue
 from stack_queue.AnimalShelter import AnimalShelter
 from stack_queue.AnimalShelter import Cat
 from stack_queue.AnimalShelter import Dog
+from stack_queue.stack_queue_bracket import validate_brackets
 
 def test_stack():
     s = Stack()
@@ -158,3 +159,37 @@ def test_animal_shelter():
     assert(str(shelter.dequeue('dog')), "None")
 
 
+def test_validate_brackets():
+    assert validate_brackets("{}") is True
+
+def test_validate_brackets2():
+    assert validate_brackets("{}(){}") is True
+
+def test_validate_brackets3():
+    assert validate_brackets("()[[Extra Characters]]") is True
+
+def test_validate_brackets4():
+    assert validate_brackets("(){}[[]]") is True
+
+def test_validate_brackets5():
+    assert validate_brackets("{}{Code}[Fellows](())") is True
+
+def test_validate_brackets6():
+   assert validate_brackets("[({}]") is False
+
+def test_validate_brackets7():
+
+    assert validate_brackets("(](") is False
+
+def test_validate_brackets8():
+        assert validate_brackets("{(})") is False
+
+def test_validate_brackets9():
+        assert validate_brackets("{") is False
+
+def test_validate_brackets01():
+        assert validate_brackets(")") is False
+
+def test_validate_brackets02():
+
+    assert validate_brackets("[}") is False
