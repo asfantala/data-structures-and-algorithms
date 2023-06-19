@@ -82,16 +82,42 @@ def merge (left,right,arr):
        ```
 ### Steps:
 
-1. Begin with the given array [8, 4, 23, 42, 16, 15].
-2. Call the Mergesort function on the entire array.
-3. During the divide phase, calculate the midpoint of the array as 6 / 2 = 3.
-4. Split the array into two subarrays: left (from index 0 to mid-1) and right (from index mid to end).
-5. Recursively call Mergesort on both the left and right subarrays.
-6. Continue dividing the subarrays until they reach a length of 1.
-7. During the merge phase, merge the sorted left and right subarrays together using the Merge function.
-8. Compare elements from the left and right subarrays and place them in the original array in sorted order.
-9. Repeat the merging process until the original array is fully sorted.
-10. The resulting sorted array is [4, 8, 15, 16, 23, 42].
+- Given Array: [8, 4, 23, 42, 16, 15]
+
+- Call the Mergesort function on the entire array [8, 4, 23, 42, 16, 15].
+- Since the length of the array is greater than 1, proceed with the sorting process.
+- Calculate the midpoint of the array as mid = 6 / 2 = 3.
+- Split the array into two subarrays: left [8, 4, 23] and right [42, 16, 15].
+- Recursively call Mergesort on the left subarray [8, 4, 23].
+- Repeat steps 2-5 for the left subarray:
+   -  The length of the left subarray is greater than 1, so proceed.
+    - Calculate the midpoint of the left subarray as mid = 3 / 2 = 1.
+    - Split the left subarray into two subarrays: left [8] and right [4, 23].
+    - Recursively call Mergesort on the left subarray [8].
+    - Since the length of the left subarray is 1, return [8].
+    - Recursively call Mergesort on the right subarray [4, 23].
+    - The length of the right subarray is greater than 1, so proceed.
+    - Calculate the midpoint of the right subarray as mid = 2 / 2 = 1.
+    - Split the right subarray into two subarrays: left [4] and right [23].
+    - Recursively call Mergesort on the left subarray [4].
+    - Since the length of the left subarray is 1, return [4].
+    - Recursively call Mergesort on the right subarray [23].
+    - Since the length of the right subarray is 1, return [23].
+  - Merge the sorted left and right subarrays [4] and [23] back into the original right subarray [4, 23].
+    - Compare the elements at index 0: 4 <= 23, so set arr[0] = 4.
+    - The right subarray is fully merged.
+    - Merge the sorted left and right subarrays [8] and [4, 23] back into the original left subarray [8, 4, 23].
+    - Compare the elements at index 0: 8 <= 4, so set arr[0] = 4.
+    - Compare the elements at index 1: 8 > 23, so set arr[1] = 23.
+    - The left subarray is fully merged.
+    - Merge the sorted left and right subarrays [4, 23] and [42, 16, 15] back into the original array [8, 4, 23, 42, 16, 15].
+      -  Compare the elements at index 0: 4 <= 42, so set arr[0] = 4.
+      - Compare the elements at index 1: 23 <= 42, so set arr[1] = 23.
+      - Compare the elements at index 2: 42 > 16, so set arr[2] = 16.
+      -  Compare the elements at index 3: 42 > 15, so set arr[3] = 15.
+      -  The right subarray is fully merged.
+- The left subarray [8] remains unchanged.
+- The resulting sorted array is [4, 8, 15, 16, 23, 42].
 
 
 ### Test :
