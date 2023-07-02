@@ -1,5 +1,6 @@
 import pytest
 from hashtable import Hashtable
+from hashmap_repeated import repeated_word
 
 
 def test_set_and_get():
@@ -63,3 +64,18 @@ def test_hash():
     ht = Hashtable()
     assert ht.hash("key1") >= 0
     assert ht.hash("key1") < ht.size
+
+
+
+def test_repeated_word():
+     # Test case 1
+    str = "Once upon a time, there was a brave princess who..."
+    assert repeated_word(str) == "a"
+
+    # Test case 2
+    input_string2 = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness..."
+    assert repeated_word(input_string2) == "it"
+
+    # Test case 3
+    input_string3 = "It was a queer, sultry summer, the summer they electrocuted me, and I didn’t realize I was dead yet..."
+    assert repeated_word(input_string3) == "summer"
