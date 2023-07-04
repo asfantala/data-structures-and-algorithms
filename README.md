@@ -18,3 +18,10 @@
 |code challenge17 |[Breadth first traversal](https://github.com/asfantala/data-structures-and-algorithms/blob/tree-breadth-first/trees/READMEb.md)|
 |code challenge26 |[insertion sort](https://github.com/asfantala/data-structures-and-algorithms/tree/main/insertion)|
 |code challenge27 |[merge sort](https://github.com/asfantala/data-structures-and-algorithms/tree/main/mergesort)|
+|code challenge28 |[Sorting_Comparisonst](https://github.com/asfantala/data-structures-and-algorithms/tree/main/Sorting_Comparisons)|
+|code challenge30 |[hashtable](https://github.com/asfantala/data-structures-and-algorithms/tree/main/hashtable)|
+|code challenge31 |[hashmap-repeated-word](https://github.com/asfantala/data-structures-and-algorithms/blob/main/hashtable/README2.md)|
+
+
+
+
