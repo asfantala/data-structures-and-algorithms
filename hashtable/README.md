@@ -1,6 +1,5 @@
-# Challenge Title
+# Challenge Hashtables
 <!-- Description of the challenge -->
-### Hashtables 
 ### Emplement a Hash Table
 - Create a class called HashTable and Node
 - Node class should have key, value, and next properties
@@ -21,5 +20,5 @@
 |hash|	O(1)|	O(1)|
 |add|O(1)|O(1)   |
 
-##  [Solution](https://github.com/asfantala/data-structures-and-algorithms/blob/hashtable/hashtable/hashtable.py)
+##  Solution : [Solution link](https://github.com/asfantala/data-structures-and-algorithms/blob/hashtable/hashtable/hashtable.py)
 
