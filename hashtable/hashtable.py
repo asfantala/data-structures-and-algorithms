@@ -3,8 +3,14 @@ class Hashtable:
         self.size = size
         self.table = [[] for _ in range(size)]
 
-    def _hash(self, key):
-        return hash(key) % self.size
+    def hash(self, key):
+        sum_of_asccii = 0
+        for ch in str(key):
+            asccii_of_ch = ord(ch)
+            sum_of_asccii += asccii_of_ch
+        temp = sum_of_asccii*599
+        indx = temp%self.size
+        return indx
 
     def set(self, key, value):
         """
@@ -13,19 +19,20 @@ class Hashtable:
         This method should hash the key, and set the key and value pair in the table, handling collisions as needed.
         Should a given key already exist, replace its value from the value argument given to this method.
         """
-        index = self._hash(key)
+        index = self.hash(key)
         for kvp in self.table[index]:
             if kvp[0] == key:
                 kvp[1] = value
                 return
         self.table[index].append([key, value])
 
+
     def get(self, key):
         """
         Arguments: key
         Returns: Value associated with that key in the table.
         """
-        index = self._hash(key)
+        index = self.hash(key)
         for kvp in self.table[index]:
             if kvp[0] == key:
                 return kvp[1]
@@ -36,7 +43,7 @@ class Hashtable:
         Arguments: key
         Returns: Boolean, indicating if the key exists in the table already.
         """
-        index = self._hash(key)
+        index = self.hash(key)
         for kvp in self.table[index]:
             if kvp[0] == key:
                 return True
@@ -53,9 +60,4 @@ class Hashtable:
                 keys.append(kvp[0])
         return list(set(keys))
 
-    def hash(self, key):
-        """
-        Arguments: key
-        Returns: Index in the collection for that key
-        """
-        return self._hash(key)
+    
