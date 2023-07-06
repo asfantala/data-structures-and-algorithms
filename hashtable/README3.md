@@ -2,7 +2,9 @@
 # Tree intersection  
 
 ## white board 
-![]()
+![](./tree_intersection.jpg)
+
+
 ## Approach & Efficiency
 
 - The space complexity of the function is O(n), where n is the number of nodes in tree1. This is because the function uses a hash table to store the nodes of tree1, which takes O(n) space.
