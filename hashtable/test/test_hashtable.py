@@ -1,7 +1,7 @@
 import pytest
 from hashtable import Hashtable
 from hashmap_repeated import repeated_word
-
+from tree_intersection.tree_intersection import tree_intersection
 
 def test_set_and_get():
     ht = Hashtable()
@@ -79,3 +79,23 @@ def test_repeated_word():
     # Test case 3
     input_string3 = "It was a queer, sultry summer, the summer they electrocuted me, and I didn’t realize I was dead yet..."
     assert repeated_word(input_string3) == "summer"
+
+
+
+
+def test_tree_intersection():
+
+    tree1 = [1, 2, 3, 4, 5, 6, 7]
+    tree2 = [1, 2, 3, 4, 5, 6, 7]
+
+    assert tree_intersection(tree1, tree2) == {1, 2, 3, 4, 5, 6, 7}
+
+    tree1 = [1, 2, 3, 4, 5, 6, 7]
+    tree2 = [1, 2, 3, 4, 5, 6, 8]
+
+    assert tree_intersection(tree1, tree2) == {1, 2, 3, 4, 5, 6}
+
+    tree1 = [1, 2, 3, 4, 5, 6, 7]
+    tree2 = [8, 9, 10, 11, 12, 13, 14]
+
+    assert tree_intersection(tree1, tree2) == set()
