@@ -21,6 +21,7 @@
 |code challenge28 |[Sorting_Comparisonst](https://github.com/asfantala/data-structures-and-algorithms/tree/main/Sorting_Comparisons)|
 |code challenge30 |[hashtable](https://github.com/asfantala/data-structures-and-algorithms/tree/main/hashtable)|
 |code challenge31 |[hashmap-repeated-word](https://github.com/asfantala/data-structures-and-algorithms/blob/main/hashtable/README2.md)|
+|code challenge32|[tree intersection](https://github.com/asfantala/data-structures-and-algorithms/blob/main/hashtable/tree_intersection/tree_intersection.py)|
 
 
 
