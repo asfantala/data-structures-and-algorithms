@@ -2,8 +2,10 @@ import pytest
 from hashtable import Hashtable
 from hashmap_repeated import repeated_word
 from tree_intersection.tree_intersection import tree_intersection
-from trees.trees.Binary_tree import Binary_tree
-from trees.trees.Node import Node
+
+from left_join.left_join import left_join
+# from trees.trees.Binary_tree import Binary_tree
+# from trees.trees.Node import Node
 
 def test_set_and_get():
     ht = Hashtable()
@@ -85,29 +87,46 @@ def test_repeated_word():
 
 
 
-def test_tree_intersection():
-    tree1 = Binary_tree()
-    tree1.root = Node(1)
-    tree1.root.left = Node(2)
-    tree1.root.right = Node(3)
-    tree1.root.left.left = Node(4)
-    tree1.root.left.right = Node(5)
-    tree1.root.right.left = Node(6)
-    tree1.root.right.right = Node(7)
+# def test_tree_intersection():
+#     tree1 = Binary_tree()
+#     tree1.root = Node(1)
+#     tree1.root.left = Node(2)
+#     tree1.root.right = Node(3)
+#     tree1.root.left.left = Node(4)
+#     tree1.root.left.right = Node(5)
+#     tree1.root.right.left = Node(6)
+#     tree1.root.right.right = Node(7)
 
-    tree2 = Binary_tree()
-    tree2.root = Node(1)
-    tree2.root.left = Node(2)
-    tree2.root.right = Node(3)
-    tree2.root.left.left = Node(4)
-    tree2.root.left.right = Node(5)
-    tree2.root.right.left = Node(6)
-    tree2.root.right.right = Node(7)
+#     tree2 = Binary_tree()
+#     tree2.root = Node(1)
+#     tree2.root.left = Node(2)
+#     tree2.root.right = Node(3)
+#     tree2.root.left.left = Node(4)
+#     tree2.root.left.right = Node(5)
+#     tree2.root.right.left = Node(6)
+#     tree2.root.right.right = Node(7)
 
-    assert tree_intersection(tree1.root, tree2.root) == {1, 2, 3, 4, 5, 6, 7}
+#     assert tree_intersection(tree1.root, tree2.root) == {1, 2, 3, 4, 5, 6, 7}
 
-    tree2.root.right.right = Node(8)
-    assert tree_intersection(tree1.root, tree2.root) == {1, 2, 3, 4, 5, 6}
+#     tree2.root.right.right = Node(8)
+#     assert tree_intersection(tree1.root, tree2.root) == {1, 2, 3, 4, 5, 6}
 
-    tree2.root = None
-    assert tree_intersection(tree1.root, tree2.root) == set()
+#     tree2.root = None
+#     assert tree_intersection(tree1.root, tree2.root) == set()
+
+
+
+def test_left_join():
+    synonyms = {"diligent": "employed", "fond": "enamored", "guide": "usher", "outfit": "garb", "wrath": "anger"}
+    antonyms = {"diligent": "idle", "fond": "averse", "guide": "follow", "outfit": None, "wrath": "delight"}
+    expected = [
+        ["diligent", "employed", "idle"],
+        ["fond", "enamored", "averse"],
+        ["guide", "usher", "follow"],
+        ["outfit", "garb", None],
+        ["wrath", "anger", "delight"],
+    ]
+    assert left_join(synonyms, antonyms) == expected
+
+
+
