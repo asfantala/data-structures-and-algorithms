@@ -2,7 +2,7 @@
 
 
 ### Whiteboard Process
-![whiteboard](/Graph.jpg)
+![whiteboard](Graph.jpg)
 
 ### Approach & Efficiency
 - Both Time and space complexity for each method:
@@ -15,5 +15,5 @@
 
 
 ### Solution
-
+https://github.com/asfantala/data-structures-and-algorithms/blob/main/graphs/graph/graph.py
 
