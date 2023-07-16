@@ -116,9 +116,22 @@ def test_repeated_word():
 
 
 
+
 def test_left_join():
-    synonyms = {"diligent": "employed", "fond": "enamored", "guide": "usher", "outfit": "garb", "wrath": "anger"}
-    antonyms = {"diligent": "idle", "fond": "averse", "guide": "follow", "outfit": None, "wrath": "delight"}
+    synonyms = Hashtable()
+    synonyms.set("diligent", "employed")
+    synonyms.set("fond", "enamored")
+    synonyms.set("guide", "usher")
+    synonyms.set("outfit", "garb")
+    synonyms.set("wrath", "anger")
+
+    antonyms = Hashtable()
+    antonyms.set("diligent", "idle")
+    antonyms.set("fond", "averse")
+    antonyms.set("guide", "follow")
+    antonyms.set("outfit", None)
+    antonyms.set("wrath", "delight")
+
     expected = [
         ["diligent", "employed", "idle"],
         ["fond", "enamored", "averse"],
@@ -126,7 +139,25 @@ def test_left_join():
         ["outfit", "garb", None],
         ["wrath", "anger", "delight"],
     ]
-    assert left_join(synonyms, antonyms) == expected
+
+    output = left_join(synonyms, antonyms)
+
+    expected = sorted(expected, key=lambda x: x[0])
+    output = sorted(output, key=lambda x: x[0])
+
+    print("Expected:", expected)
+    print("Output:", output)
+
+    assert output == expected
+
+    print("Test case passed successfully!")
+
+
+
+
+
+
+
 
 
 
