@@ -1,5 +1,5 @@
 import pytest
-from graph.graph import Graph
+from graphs.graph import Graph
 
 #Vertex can be successfully added to the graph
 def test_add_vertex():      
@@ -75,8 +75,25 @@ def test_size_one_node():
     actual = graph.size()
     assert actual == expected
 
+    
+def test_breadth_first():
+    graph = Graph()
 
+    vertex_a = graph.add_vertex('A')
+    vertex_b = graph.add_vertex('B')
+    vertex_c = graph.add_vertex('C')
+    vertex_d = graph.add_vertex('D')
+    vertex_e = graph.add_vertex('E')
 
+    graph.add_edge(vertex_a, vertex_b)
+    graph.add_edge(vertex_a, vertex_c)
+    graph.add_edge(vertex_b, vertex_d)
+    graph.add_edge(vertex_c, vertex_d)
+    graph.add_edge(vertex_c, vertex_e)
+    graph.add_edge(vertex_d, vertex_e)
 
-
+    traversal_order = graph.breadth_first(vertex_a)
+    expected_order = [vertex_a, vertex_b, vertex_c, vertex_d, vertex_e]
+    assert traversal_order == expected_order
+   
 
