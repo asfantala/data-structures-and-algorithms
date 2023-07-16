@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self, value=None):
         self.value = value
@@ -89,25 +91,77 @@ class Graph:
             for edge in self.adj_list[vertex]:
                 output += f'{edge.vertex} -----> '
             output += '\n'
-        return output    
+        return output
+    
+    def breadth_first(self, start_node):
+        '''
+        Arguments: Node
+        Return: A collection of nodes in the order they were visited.
+        Display the collection
+        
+        '''
+        visited = set()
+        traversal_order = []
+
+        queue = deque()
+        queue.append(start_node)
+        visited.add(start_node)
+
+        while queue:
+            current_node = queue.popleft()
+            traversal_order.append(current_node)
+
+            neighbors = self.adj_list[current_node]
+            for neighbor in neighbors:
+                if neighbor.vertex not in visited:
+                    visited.add(neighbor.vertex)
+                    queue.append(neighbor.vertex)
+
+        return traversal_order
+
+    # def breadth_first(self, node1):
+    #     '''
+    #     Arguments: node1
+    #     Returns: A collection of nodes in the order they were visited.
+    #     '''
+    #     nodes = []
+    #     breadth = Queue()
+    #     visited = set()
+
+    #     breadth.enqueue(node1)
+    #     visited.add(node1)
+
+    #     while not breadth.is_empty():
+    #         front = breadth.dequeue()
+    #         nodes.append(front)
+
+    #         for edge in self.adj_list[front]:
+    #             child = edge.vertex
+    #             if child not in visited:
+    #                 visited.add(child)
+    #                 breadth.enqueue(child)
+
+    #     return nodes
+
+
+
+
+
 
 
 if __name__ ==  '__main__':
     
-        graph1 = Graph()
+        graph = Graph()
+        graph.add_edge('A', 'B')
+        graph.add_edge('A', 'C')
+        graph.add_edge('B', 'D')
+        graph.add_edge('B', 'E')
+        graph.add_edge('C', 'F')
+        graph.add_edge('E', 'F')
 
-        a = graph1.add_vertex("A")
-        b = graph1.add_vertex("B")
-        c = graph1.add_vertex("C")
-        d = graph1.add_vertex("D")
-
-        graph1.add_edge(a,b)
-        graph1.add_edge(a,c)
-        graph1.add_edge(c,b)
-        graph1.add_edge(d,b)
-        graph1.add_edge(d,c)
-
-        print(graph1)
+        # Testing the breadth_first method
+        traversal = graph.breadth_first('A')
+        print(traversal)
 
 
 
