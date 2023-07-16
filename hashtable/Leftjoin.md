@@ -14,11 +14,12 @@
 def left_join(synonyms, antonyms):
 
     result = []
-    for key, value in synonyms.items():
-        result.append([key, value])
-        if key in antonyms:
-            result[-1].append(antonyms[key])
+    synonyms_keys = synonyms.keys()
+    for key in synonyms_keys:
+        value = synonyms.get(key)
+        if antonyms.has(key):
+            result.append([key, value, antonyms.get(key)])
         else:
-            result[-1].append(None)
+            result.append([key, value, None])
     return result
 ```
