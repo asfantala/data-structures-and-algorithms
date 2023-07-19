@@ -1,5 +1,6 @@
 import pytest
 from graphs.graph import Graph
+from graphs.graph_business_trip import business_trip
 
 #Vertex can be successfully added to the graph
 def test_add_vertex():      
@@ -97,3 +98,48 @@ def test_breadth_first():
     assert traversal_order == expected_order
    
 
+def test_business_trip():
+    graph = Graph()
+    vertex_a = graph.add_vertex('Metroville')
+    vertex_b = graph.add_vertex('Pandora')
+    vertex_c = graph.add_vertex('Naboo')
+    vertex_d = graph.add_vertex('Arendelle')
+    vertex_e = graph.add_vertex('New Monstropolis')
+    vertex_f = graph.add_vertex('Narnia')
+
+    graph.add_edge(vertex_a, vertex_b, 82)
+    graph.add_edge(vertex_a, vertex_c, 26)
+    graph.add_edge(vertex_a, vertex_d, 99)
+    graph.add_edge(vertex_a, vertex_e, 105)
+    graph.add_edge(vertex_a, vertex_f, 37)
+    graph.add_edge(vertex_b, vertex_d, 150)
+    graph.add_edge(vertex_d, vertex_e, 42)
+    graph.add_edge(vertex_e, vertex_c, 73)
+    graph.add_edge(vertex_c, vertex_f,250)
+
+    actual = business_trip(graph, [vertex_a, vertex_b])
+    expected = '$82'
+    assert actual == expected
+
+def test_business_trip_if_noedges():
+    graph = Graph()
+    vertex_a = graph.add_vertex('Metroville')
+    vertex_b = graph.add_vertex('Pandora')
+    vertex_c = graph.add_vertex('Naboo')
+    vertex_d = graph.add_vertex('Arendelle')
+    vertex_e = graph.add_vertex('New Monstropolis')
+    vertex_f = graph.add_vertex('Narnia')
+
+    graph.add_edge(vertex_a, vertex_b, 82)
+    graph.add_edge(vertex_a, vertex_c, 26)
+    graph.add_edge(vertex_a, vertex_d, 99)
+    graph.add_edge(vertex_a, vertex_e, 105)
+    graph.add_edge(vertex_a, vertex_f, 37)
+    graph.add_edge(vertex_b, vertex_d, 150)
+    graph.add_edge(vertex_d, vertex_e, 42)
+    graph.add_edge(vertex_e, vertex_c, 73)
+    graph.add_edge(vertex_c, vertex_f,250)
+
+    actual = business_trip(graph, [vertex_f, vertex_d, vertex_c])
+    expected = None
+    assert actual == expected    
