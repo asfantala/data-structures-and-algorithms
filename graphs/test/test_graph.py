@@ -143,3 +143,35 @@ def test_business_trip_if_noedges():
     actual = business_trip(graph, [vertex_f, vertex_d, vertex_c])
     expected = None
     assert actual == expected    
+
+
+def test_depth_first():
+    graph = Graph()
+
+    vertex_a = graph.add_vertex('A')
+    vertex_b = graph.add_vertex('B')
+    vertex_c = graph.add_vertex('C')
+    vertex_d = graph.add_vertex('D')
+    vertex_e = graph.add_vertex('E')
+    vertex_f = graph.add_vertex('F')
+    vertex_g = graph.add_vertex('G')
+    vertex_h = graph.add_vertex('H')
+
+    graph.add_edge(vertex_a, vertex_b)
+    graph.add_edge(vertex_a, vertex_d)
+    graph.add_edge(vertex_b, vertex_d)
+    graph.add_edge(vertex_b, vertex_c)
+    graph.add_edge(vertex_c, vertex_g)
+    graph.add_edge(vertex_d, vertex_e)
+    graph.add_edge(vertex_d, vertex_f)
+    graph.add_edge(vertex_d, vertex_h)
+    graph.add_edge(vertex_h, vertex_f)
+
+    actual = graph.depth_first(vertex_a)
+
+    expected_output = "A, B, D, E, F, H, C, G"
+
+    actual_output = ", ".join([node.value for node in actual])
+    
+    assert actual_output == expected_output
+

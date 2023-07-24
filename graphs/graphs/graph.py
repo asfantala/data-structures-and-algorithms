@@ -1,4 +1,4 @@
-from collections import deque
+from collections import deque 
 
 class Node:
     def __init__(self, value=None):
@@ -118,8 +118,47 @@ class Graph:
                     queue.append(neighbor.vertex)
 
         return traversal_order
+    
+    def depth_first(self, start_node):
+        '''
+        Arguments: Node
+        Return: A collection of nodes in their pre-order depth-first traversal order
+        Display the collection
+        
+        '''
+        visited = set()
+        traversal_order = []
+        def dfs(curr_node):
+            visited.add(curr_node)
+            traversal_order.append(curr_node)
+            for neighbor in self.adj_list[curr_node]:
+                if neighbor.vertex not in visited:
+                    dfs(neighbor.vertex)
+        dfs(start_node)
+        return traversal_order
+    
+    # def depth_first(self,start_node):
+    #     '''
+    #     Arguments: Node
+    #     Return: A collection of nodes in their pre-order depth-first traversal order
+    #     Display the collection
+        
+    #     '''
+    #     arr = []
+    #     stack = stack()
+    #     stack.push(start_node)
+    #     visited = set()
+    #     visited.add(start_node)
+    #     while not (stack.is_empty()):
+    #         top = stack.pop()
+    #         arr.append(top.value)
+    #         for edge in self._adjacency_list[top]:
+    #             if edge.vertex not in visited:
+    #                 stack.push(edge.vertex)
+    #                 visited.add(edge.vertex)
+    #     return arr
 
-    # def breadth_first(self, node1):
+    # def breadth_first(self, start_node1):
     #     '''
     #     Arguments: node1
     #     Returns: A collection of nodes in the order they were visited.
@@ -158,8 +197,6 @@ if __name__ ==  '__main__':
         graph.add_edge('B', 'E')
         graph.add_edge('C', 'F')
         graph.add_edge('E', 'F')
-
-        # Testing the breadth_first method
         traversal = graph.breadth_first('A')
         print(traversal)
 
