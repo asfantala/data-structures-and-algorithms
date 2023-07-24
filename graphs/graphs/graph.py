@@ -118,6 +118,28 @@ class Graph:
                     queue.append(neighbor.vertex)
 
         return traversal_order
+    
+    def depth_first(self,start_node):
+        '''
+        Arguments: Node
+        Return: A collection of nodes in their pre-order depth-first traversal order
+        Display the collection
+        
+        '''
+        def dfs_recursive(node, visited, traversal_order):
+            visited.add(node)
+            traversal_order.append(node)
+            for neighbor in self.adj_list[node]:
+                if neighbor.vertex not in visited:
+                    dfs_recursive(neighbor.vertex, visited, traversal_order)
+
+        visited = set()
+        traversal_order = []
+        dfs_recursive(start_node, visited, traversal_order)
+        return traversal_order
+    
+
+        
 
     # def breadth_first(self, node1):
     #     '''
@@ -158,8 +180,6 @@ if __name__ ==  '__main__':
         graph.add_edge('B', 'E')
         graph.add_edge('C', 'F')
         graph.add_edge('E', 'F')
-
-        # Testing the breadth_first method
         traversal = graph.breadth_first('A')
         print(traversal)
 
