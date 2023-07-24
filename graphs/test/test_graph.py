@@ -169,7 +169,9 @@ def test_depth_first():
 
     actual = graph.depth_first(vertex_a)
 
-    expected = ['A', 'B', 'D', 'E', 'F', 'H', 'C', 'G']
+    expected_output = "A, B, D, E, F, H, C, G"
 
-    assert [node.value for node in actual] == expected
+    actual_output = ", ".join([node.value for node in actual])
+    
+    assert actual_output == expected_output
 
