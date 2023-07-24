@@ -26,6 +26,7 @@
 |code challenge35|[Graphs ](https://github.com/asfantala/data-structures-and-algorithms/tree/main/graphs)|
 |code challenge36|[Breadth first graph](https://github.com/asfantala/data-structures-and-algorithms/blob/main/graphs/graphs/graph.py)|
 |code challenge37|[Graph business trip](https://github.com/asfantala/data-structures-and-algorithms/blob/main/graphs/graphs/graph_business_trip.py)|
+|code challenge38|[depth first graph](https://github.com/asfantala/data-structures-and-algorithms/blob/main/graphs/depth_first.md)|
 
 
 
